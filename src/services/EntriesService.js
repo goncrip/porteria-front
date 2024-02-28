@@ -77,6 +77,31 @@ export default class EntriesService {
         return data;
     }
 
+    async getIngresos(from,
+                      to,
+                      idEmpresa,
+                      idVehiculo,
+                      idPersona,
+                      idTipoCarga,
+                      token)
+    {
+        const res = await fetch(`${process.env.VUE_APP_API}/GetIngresos?code=${process.env.VUE_APP_CODE}&from=${from}&to=${to}&idempresa=${idEmpresa}&idvehiculo=${idVehiculo}&idpersona=${idPersona}&idtipocarga=${idTipoCarga}`,
+        {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization' : `Bearer ${token}`
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        
+        const data = await res.json();
+
+        return data;
+    }
+
     async addPerson(document,
                     documentType,
                     names, 
@@ -148,6 +173,30 @@ export default class EntriesService {
         body: JSON.stringify(
         {
             Descripcion : description
+        })
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    async addEntry(idCompany,
+        idVehicle,
+        idPerson,
+        idLoadType, 
+        weight,
+        token){
+        const res = await fetch(`${process.env.VUE_APP_API}/AddIngreso?code=${process.env.VUE_APP_CODE}`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(
+        {
+            IdEmpresa : idCompany,
+            IdVehiculo: idVehicle,
+            IdPersona: idPerson,
+            IdTipoCarga: idLoadType,
+            Peso: weight
         })
         })
         .catch(error => console.error('Error:', error));

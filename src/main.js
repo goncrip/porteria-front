@@ -5,6 +5,7 @@ import PrimeVue from 'primevue/config';
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
 import Dropdown from 'primevue/dropdown';
 import Card from 'primevue/card';
 import Menubar from 'primevue/menubar';
@@ -31,6 +32,7 @@ app.use(ToastService);
 
 app.component('InputText', InputText);
 app.component('DataTable', DataTable);
+app.component('Column', Column);
 app.component('Button', Button);
 app.component('Toast', Toast);
 app.component('Dropdown', Dropdown);

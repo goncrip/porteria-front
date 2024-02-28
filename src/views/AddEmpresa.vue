@@ -58,11 +58,11 @@ export default {
                                       'token').then(() => {
                                         this.messageService.showOkMessage(this.$toast, 'Se ha creado el registro.')
                                         location.reload()
+                                      })
                                         .catch((e) => {
-                                            console.error(e);
-                                            this.messageService.showCustomError(this.$toast, 'Ha ocurrido un error al guardar.');
-                                        });                                             
-        });
+                                            console.error(e)
+                                            this.messageService.showCustomError(this.$toast, 'Ha ocurrido un error al guardar.')
+                                        })                                            
 
     }
 }
