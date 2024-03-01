@@ -102,6 +102,25 @@ export default class EntriesService {
         return data;
     }
 
+    async getEgresos(token)
+    {
+        const res = await fetch(`${process.env.VUE_APP_API}/GetEgresosPendientes?code=${process.env.VUE_APP_CODE}`,
+        {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization' : `Bearer ${token}`
+            }
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        });
+
+        const data = await res.json();
+
+        return data;
+    }
+
     async addPerson(document,
                     documentType,
                     names, 
@@ -198,6 +217,19 @@ export default class EntriesService {
             IdTipoCarga: idLoadType,
             Peso: weight
         })
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    async addExit(idIngreso,
+                token){
+
+        const res = await fetch(`${process.env.VUE_APP_API}/UpdateEgreso?code=${process.env.VUE_APP_CODE}&idIngreso=${idIngreso}`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
         })
         .catch(error => console.error('Error:', error));
     }

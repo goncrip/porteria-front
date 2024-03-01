@@ -106,6 +106,7 @@
                 <AddTipoCarga></AddTipoCarga>
             </Dialog>
     </div>
+    <Egresos v-if="displayAlta"></Egresos>
     <div v-show="displayReport">
         <Reporte></Reporte>
     </div>
@@ -123,6 +124,7 @@ import AddVehiculo from './views/AddVehiculo.vue'
 import AddEmpresa from './views/AddEmpresa.vue'
 import AddTipoCarga from './views/AddTipoCarga.vue'
 import Reporte from './views/Reporte.vue'
+import Egresos from './views/Egresos.vue'
 import Toast from 'primevue/toast'
 import MessageService from './services/MessageService'
 import BlockUI from 'primevue/blockui'
@@ -140,7 +142,8 @@ export default {
     AddTipoCarga,
     Toast,
     Reporte,
-    BlockUI
+    BlockUI,
+    Egresos
 },
     data() {
         return {
